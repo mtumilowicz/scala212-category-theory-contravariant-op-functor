@@ -41,15 +41,18 @@ class Contravariant f where
 * For contravariant f, `f a` represents input
 * Using a function `b -> a` we can modify input to type `b` 
 (using `contramap`)
+* Notice that a contravariant functor is just a regular 
+functor from the opposite category
 
 # project description
 We provide example of contravariant functor with tests.
 * haskell is more expressive:
     ```
-    newtype Op z a = Op (a -> z)
+    type Op r a = a -> r
     
-    instance Contravariant (Op z) where
-      contramap h (Op g) = Op (g . h)
+    instance Contravariant (Op r) where
+        -- (b -> a) -> Op r a -> Op r b
+        contramap f g = g . f
     ```
 * and the Scala code comes here:
     ```
@@ -57,6 +60,8 @@ We provide example of contravariant functor with tests.
       def map[B](f: B => A): Op[R, B] = this.compose(f).apply
     }
     ```
+    * **Notice that the function f inserts itself before 
+    the contents of `Op` - the function `g`.**
 * tests:
     * we have function counting list's size, and we want to modify 
     it to accept `Set`:
