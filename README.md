@@ -38,11 +38,12 @@ class Contravariant f where
   contramap :: (b -> a) -> f a -> f b
 ```
 
-* For contravariant f, `f a` represents input
+* For contravariant `f`, `f a` represents input
 * Using a function `b -> a` we can modify input to type `b` 
 (using `contramap`)
 * Notice that a contravariant functor is just a regular 
-functor from the opposite category
+functor from the opposite category (category with reversed
+morphisms)
 
 # project description
 We provide example of contravariant functor with tests.
