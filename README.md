@@ -24,7 +24,7 @@ class Functor f where
 * Three easy examples of functors (and modification of output):
     1. `Option[A]`: using `map` we can adapt potentially `None[A]`
     to `None[B]`
-    1. `List[A]`: using `map` we can adapt potentially `List[A]`
+    1. `List[A]`: using `map` we can adapt `List[A]`
     to `List[B]`
     1. `Reader[R, A]` (`r -> a`) - we can think about it as a
     functions taking `r` as input and producing `a`; using `map`
